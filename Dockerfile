@@ -9,6 +9,9 @@ FROM python:3.14-slim
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
 
+# Patch OS packages (fixes the zlib finding)
+RUN apt-get update && apt-get upgrade -y --no-install-recommends && rm -rf /var/lib/apt/lists/*
+
 # Non-root user
 RUN useradd --system --uid 10001 --no-create-home appuser
 
