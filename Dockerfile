@@ -17,7 +17,7 @@ RUN useradd --system --uid 10001 --no-create-home appuser
 
 WORKDIR /app
 COPY --from=builder /install /usr/local
-COPY main.py ./
+COPY main.py orgs.py ./
 
 # No package manager in the runtime image
 RUN pip uninstall -y pip
