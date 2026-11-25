@@ -76,6 +76,7 @@ to be green.
 ## Decisions and lessons
 
 - [ADR 0001](docs/adr/0001-use-fastapi.md): why Python and FastAPI.
+- [ADR 0002](docs/adr/0002-use-postgresql.md): why PostgreSQL for persistence.
 - The first image scan failed on five HIGH findings. Reading the scan per package showed
   none came from this service's dependencies: they were copies bundled inside `pip` in the
   base image. Removing `pip` from the runtime image cleared them, and it was verified by CI
