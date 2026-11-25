@@ -15,7 +15,7 @@ is a production system.
 | `GET /readyz` readiness probe (returns 503 when a dependency is down) | Done |
 | Published OpenAPI contract (`openapi.json`), checked by a test | Done |
 | `POST /orgs` and `GET /orgs/{id}`: register and fetch a business organisation | Done, in-memory storage |
-| Persistent storage (PostgreSQL) | Not started |
+| Persistent storage (PostgreSQL), verified in CI against a real database | Done |
 | Login, tokens, roles and MFA | Not started |
 
 ## Run it locally
@@ -86,7 +86,8 @@ to be green.
 
 ## Known limitations
 
-- Organisations are stored in memory and are lost on restart.
+- The schema is created at startup with CREATE TABLE IF NOT EXISTS. There is no migration tool yet, so schema changes need one before the next table is added.
+- Without DATABASE_URL the service falls back to in-memory storage, which is for local and test use only.
 - There is no authentication yet, so every endpoint is open.
 
 ## Project layout
