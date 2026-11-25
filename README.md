@@ -69,7 +69,7 @@ an organisation are stored (data minimisation).
 
 ## CI
 
-Every pull request runs two jobs: unit tests, then an image build followed by a Trivy
+Every pull request runs two jobs: unit tests, then an image build, a container smoke test and a Trivy
 vulnerability scan that fails on fixable HIGH or CRITICAL findings. Merging requires both
 to be green.
 
@@ -87,7 +87,6 @@ to be green.
 
 - Organisations are stored in memory and are lost on restart.
 - There is no authentication yet, so every endpoint is open.
-- The CI pipeline builds the image but does not yet start it and probe `/healthz`.
 
 ## Project layout
 
