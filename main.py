@@ -1,7 +1,11 @@
-﻿import os
+import os
+
 from fastapi import FastAPI, Response
 
-app = FastAPI(title="Identity Service (practice)", version="0.1.0")
+from orgs import router as orgs_router
+
+app = FastAPI(title="Identity Service (practice)", version="0.2.0")
+app.include_router(orgs_router)
 
 
 @app.get("/healthz")
