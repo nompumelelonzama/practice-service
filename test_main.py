@@ -20,3 +20,13 @@ def test_readyz_503_when_db_down(monkeypatch):
     monkeypatch.setenv("DB_AVAILABLE", "false")
     r = client.get("/readyz")
     assert r.status_code == 503
+
+
+def test_committed_openapi_matches_app():
+    import json
+    from pathlib import Path
+
+    committed = json.loads(Path("openapi.json").read_text(encoding="utf-8"))
+    assert committed == app.openapi()
+    assert "/healthz" in committed["paths"]
+    assert "/readyz" in committed["paths"]
