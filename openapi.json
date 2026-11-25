@@ -108,7 +108,7 @@
     "/readyz": {
       "get": {
         "summary": "Readyz",
-        "description": "Readiness: can we serve traffic? Simulates a database check.",
+        "description": "Readiness: can we serve traffic? Checks the database when one is configured.",
         "operationId": "readyz_readyz_get",
         "responses": {
           "200": {

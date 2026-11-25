@@ -16,6 +16,8 @@ VALID = {
 
 @pytest.fixture(autouse=True)
 def clean_repo():
+    if hasattr(repo, "ensure_schema"):
+        repo.ensure_schema()
     repo.clear()
     yield
     repo.clear()
