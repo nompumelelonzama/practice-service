@@ -19,6 +19,9 @@ WORKDIR /app
 COPY --from=builder /install /usr/local
 COPY main.py .
 
+# No package manager in the runtime image
+RUN pip uninstall -y pip
+
 USER 10001
 EXPOSE 8000
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
